@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <nav className="w-full py-6 absolute top-0 left-0 z-50">
+    <nav className="w-full bg-white py-6 absolute top-0 left-0 z-50">
       <div className="container mx-auto px-4 max-w-6xl">
         <Image
           src="/logo.png" 

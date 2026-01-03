@@ -1,46 +1,69 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Results = () => {
+  const results = [
+    {
+      id: 1,
+      imageSrc: "/Images/Result.png",
+      altText: "Screenshot of calendar showing 32 booked jobs"
+    },
+    {
+      id: 2,
+      imageSrc: "/Images/Result2.png",
+      altText: "Screenshot of revenue dashboard showing consistent growth"
+    }
+  ];
+
   return (
-    <section className="py-16 bg-slate-50">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">
-          Results Speak for Themselves
-        </h2>
+    <section className="py-24 bg-slate-50 border-t border-slate-200">
+      {/* Increased max-width to 7xl to make cards wider/larger */}
+      <div className="container mx-auto px-4 max-w-7xl">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-white p-2 rounded-xl shadow-md overflow-hidden border border-slate-200">
-              <div className="aspect-[4/3] bg-slate-100 flex flex-col items-center justify-center text-slate-400 relative">
-                <div className="absolute inset-0 p-6 flex flex-col justify-center">
-                  <div className="w-full h-4 bg-slate-200 rounded mb-4 w-3/4"></div>
-                  <div className="w-full h-4 bg-slate-200 rounded mb-4"></div>
-                  <div className="w-full h-12 bg-blue-100 rounded mb-4 border-l-4 border-blue-500 flex items-center px-4">
-                    <span className="text-blue-700 font-bold text-sm">BOOKED: New HVAC Install</span>
-                  </div>
-                  <div className="w-full h-12 bg-blue-100 rounded mb-4 border-l-4 border-blue-500 flex items-center px-4">
-                    <span className="text-blue-700 font-bold text-sm">BOOKED: Emergency Pipe Leak</span>
-                  </div>
-                  <div className="w-full h-4 bg-slate-200 rounded w-1/2"></div>
-                </div>
-                <span className="mt-auto mb-4 text-xs font-semibold uppercase tracking-widest text-slate-300">
-                  [ Verified Calendar Data Placeholder ]
-                </span>
-              </div>
-              <div className="p-4 text-center">
-                <p className="text-slate-700 font-semibold">
-                  {i === 1 ? '32 Booked Jobs in 14 Days' : i === 2 ? 'Full Calendar for Multi-Tech Team' : 'Consistent $15k+ Weekly Revenue'}
-                </p>
-                <p className="text-sm text-slate-500">Actual system performance output</p>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#002d57] mb-4 tracking-tight">
+            Results Speak for Themselves
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+            Real calendars, real revenue. No vanity metrics.
+          </p>
+        </div>
+        
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {results.map((item) => (
+            <div 
+              key={item.id} 
+              className="group relative bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            >
+              {/* 1. Increased Aspect Ratio to [4/3] makes the card taller/larger.
+                  2. 'relative' allows next/image to fill this div.
+              */}
+              <div className="relative w-full aspect-[4/3] bg-slate-100">
+                
+                {/* Overlay for hover effect */}
+                <div className="absolute inset-0 bg-[#002d57] opacity-0 group-hover:opacity-5 transition-opacity duration-300 z-10 pointer-events-none" />
+                
+                <Image 
+                  src={item.imageSrc} 
+                  alt={item.altText}
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  // Changed to 'object-cover' so image fills 100% of the space with no gaps
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority={item.id === 1}
+                />
               </div>
             </div>
           ))}
         </div>
         
-        <div className="mt-12 text-center text-slate-600 max-w-2xl mx-auto">
-          <p>
-            We don't focus on "cost per click" or "impressions." We focus on how many high-intent appointments are sitting on your calendar when you wake up in the morning.
-          </p>
+        <div className="mt-16 text-center">
+           <div className="inline-block border-l-4 border-[#125a99] bg-white p-6 shadow-sm text-left max-w-2xl">
+             <p className="text-slate-700 italic text-lg">
+               "We focus on how many high-intent appointments are sitting on your calendar when you wake up."
+             </p>
+           </div>
         </div>
       </div>
     </section>
