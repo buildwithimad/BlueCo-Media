@@ -5,12 +5,12 @@ const Results = () => {
   const results = [
     {
       id: 1,
-      imageSrc: "/Images/Result.png",
+      imageSrc: "/Images/1.png",
       altText: "Screenshot of calendar showing 32 booked jobs"
     },
     {
       id: 2,
-      imageSrc: "/Images/Result2.png",
+      imageSrc: "/Images/2.png",
       altText: "Screenshot of revenue dashboard showing consistent growth"
     }
   ];
@@ -39,7 +39,7 @@ const Results = () => {
               {/* 1. Increased Aspect Ratio to [4/3] makes the card taller/larger.
                   2. 'relative' allows next/image to fill this div.
               */}
-              <div className="relative w-full aspect-[4/3] bg-slate-100">
+              <div className="relative w-full aspect-[4/4] bg-slate-100">
                 
                 {/* Overlay for hover effect */}
                 <div className="absolute inset-0 bg-[#002d57] opacity-0 group-hover:opacity-5 transition-opacity duration-300 z-10 pointer-events-none" />
